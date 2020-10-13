@@ -56,6 +56,7 @@ export const Container = styled.header`
   .cart {
     width: 40px;
     margin-left: 30px;
+    cursor: pointer;
   }
 
   .search-input {
@@ -87,6 +88,13 @@ export const Container = styled.header`
         border-bottom-left-radius: 0;
       }
     }
+  }
+
+  .profile{
+    border-radius:50%;
+    width:50px;
+    align-self:center;
+    margin-right:20px;
   }
 
   @media (max-width:800px){

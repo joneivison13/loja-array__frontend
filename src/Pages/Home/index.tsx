@@ -3,7 +3,7 @@ import Header from "../../Components/Header";
 import { Container } from "./styles";
 
 import BgImage from "../../assets/img/bghome.svg";
-import { Product } from "../../Components/Product";
+import Product from "../../Components/Product";
 
 import short01 from '../../assets/products-assets/short01.jpeg'
 import short02 from '../../assets/products-assets/short02.jpeg'
@@ -15,7 +15,9 @@ import biquini03 from '../../assets/products-assets/biquini03.jpeg'
 import biquini04 from '../../assets/products-assets/biquini04.webp'
 
 
-interface IHomeProps {}
+interface IHomeProps {
+  location:any;
+}
 
 const Home: React.FunctionComponent<IHomeProps> = (props) => {
   const products = [
@@ -41,44 +43,48 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
     {
       image:[short04, short03, short01, short02],
       name:'Short azul masculino 03',
-      id:3,
+      id:4,
       preco:'300.50'
     },
     
     {
       image:[biquini01, biquini02, biquini03,biquini04],
       name:'biquini azul 01',
-      id:4,
+      id:5,
       preco:'300.50'
     },
     {
       image:[biquini02, biquini03,biquini04, biquini01],
       name:'biquini azul 02',
-      id:5,
+      id:6,
       preco:'300.50'
     },
     {
       image:[biquini03,biquini04, biquini01, biquini02],
       name:'biquini azul 03',
-      id:6,
+      id:7,
       preco:'300.50'
     },
     {
       image:[biquini04, biquini01, biquini02,biquini03],
       name:'biquini azul 03',
-      id:6,
+      id:8,
       preco:'300.50'
     },
   ]
+
+  if(!props.location.state){
+    window.location.href = '/login'
+  }
   return (
     <>
-      <Header />
+      <Header userphoto={props.location.state}/>
       <Container>
-        <img src={BgImage} alt="" className="bg" draggable="false" />
+         <img draggable="false" src={BgImage} alt="" className="bg"   />
         <div className="products">
           {products.map(product => {
             return (
-              <Product product={product} key={product.id}/>
+              <Product product={product} key={product.id} />
             )
           })}
         </div>

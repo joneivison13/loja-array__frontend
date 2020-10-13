@@ -29,6 +29,7 @@ export const Container = styled.div`
     .products{
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
+      margin-top:-200px;
     }
   }
 
@@ -36,6 +37,7 @@ export const Container = styled.div`
     .products{
       display:grid;
       grid-template-columns:1fr 1fr;
+      margin-top:-350px;
     }
   }
 
@@ -43,6 +45,7 @@ export const Container = styled.div`
     .products{
       display:grid;
       grid-template-columns:1fr;
+      margin-top:-440px;
     }
   }
 `;

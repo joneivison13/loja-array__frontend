@@ -7,13 +7,15 @@ import Cart from "../../assets/img/cart.svg";
 import Location from "../../assets/img/location.svg";
 import Navbutton from "../../assets/img/navbutton.svg";
 
-interface IHeaderProps {}
+interface IHeaderProps {
+  userphoto?:any;
+}
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
   const inputSearchRef = useRef<HTMLInputElement>(null);
 
   const [mostSearch, setMostSearch] = useState(false);
-  const [leftState, setLeftState] = useState(true)
+  const [leftState, setLeftState] = useState(true);
 
   function mostSearchInput() {
     setMostSearch(!mostSearch);
@@ -21,6 +23,8 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
       inputSearchRef.current?.focus();
     }
   }
+
+  console.log(props)
   return (
     <>
       <Container>
@@ -36,53 +40,76 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
               onBlur={() => setMostSearch(false)}
             />
             <button className="button-search" type="submit">
-              <img src={Search} alt="" draggable="false" />
+              <img draggable="false" src={Search} alt="" />
             </button>
           </form>
         </div>
         <span className="thumbnail">
-          <img src={Logo} alt="" className="logo"  draggable="false"/>
-          <img src={Navbutton} alt="" className="navbutton" draggable="false" onClick={ () => {
-            setLeftState(!leftState)
-          }}/>
+          <img draggable="false" src={Logo} alt="" className="logo" />
+          <img
+            draggable="false"
+            src={Navbutton}
+            alt=""
+            className="navbutton"
+            onClick={() => {
+              setLeftState(!leftState);
+            }}
+          />
         </span>
 
         <span className="items">
-          <button className="login" onClick={() => {
-            window.location.href = '/login'
-          }}>Faça Login ou Cadastre-se</button>
+          {!!localStorage.getItem("@TOKEN") ? (
+            <div className="profile">
+              <img width='50px' className="profile" src={`http://localhost:3333/static/img/${props.userphoto.user.user_photo}`} alt=""/>
+            </div>
+          ) : (
+            <button
+              className="login"
+              onClick={() => {
+                window.location.href = "/login";
+              }}
+            >
+              Faça Login ou Cadastre-se
+            </button>
+          )}
           <div className="search" onClick={() => mostSearchInput()}>
             Search
             <button className="button-search">
-              <img src={Search} alt="" draggable="false" />
+              <img draggable="false" src={Search} alt="" />
             </button>
           </div>
 
-          <img src={Cart} alt="" draggable="false" className="cart" />
+          <img
+            draggable="false"
+            src={Cart}
+            onClick={() => alert("Página de carrinho em produção")}
+            alt=""
+            className="cart"
+          />
         </span>
       </Container>
 
       <SubHeader left={leftState}>
         <div>
-          <img src={Location} alt="" />
+          <img draggable="false" src={Location} alt="" />
           <p>
             Olá <br />
             <strong>Selecione o seu Endereço</strong>
           </p>
         </div>
         <p>Mais Vendidos</p>
-        <p>Ofertas do  Dia</p>
+        <p>Ofertas do Dia</p>
         <p>Atendimento ao Cliente</p>
-        
+
         <span className="items">
           <div className="search" onClick={() => mostSearchInput()}>
             Search
             <button className="button-search">
-              <img src={Search} alt="" draggable="false" />
+              <img draggable="false" src={Search} alt="" />
             </button>
           </div>
 
-          <img src={Cart} alt="" draggable="false" className="cart" />
+          <img draggable="false" src={Cart} alt="" className="cart" />
         </span>
       </SubHeader>
     </>

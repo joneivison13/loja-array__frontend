@@ -7,9 +7,9 @@ import { Container } from './styles';
 const Login:React.FC = () => {
   return(
     <Container>
-      <img src={LogoImage} alt="" draggable="false" className="logo"/>
+       <img draggable="false" src={LogoImage} alt=""   className="logo"/>
       <LoginComponent/>
-      <img src={WavesImage} alt="" draggable="false" className="background-waves"/>
+       <img draggable="false" src={WavesImage} alt=""   className="background-waves"/>
     </Container>
   )
 }

@@ -52,15 +52,6 @@ const GlobalStyle = createGlobalStyle`
     -moz-transition: all .3s ease-out;
   }
 
-  .label-float input:required:invalid + label{
-    color: red;
-  }
-  .label-float input:focus:required:invalid{
-    border-bottom: 2px solid red;
-  }
-  .label-float input:required:invalid + label:before{
-    content: '*';
-  }
   .label-float input:focus + label,
   .label-float input:not(:placeholder-shown) + label{
     font-size: 13px;

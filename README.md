@@ -1,44 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Loja feita para venda de roupas de praia.
 
-## Available Scripts
+Modelo da interface no [Figma](https://www.figma.com/file/QDQwPjiXvMeXzfjp6lJaWq/Loja?node-id=0%3A1).
 
-In the project directory, you can run:
+## Como iniciar a aplicação??
 
-### `yarn start`
+### Precisas ter instalado os seguintes softwares:  
+  * [git](https://git-scm.com/downloads)
+  * [nodejs](https://nodejs.org/en/download/)  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h3>Como iniciar o back-end?<br></h3>
+  1 - Crie uma pasta no local de sua preferencia com o nome da aplicação.<br>
+  2 - Com a pasta criada, abra ela pelo seu terminal.<br>
+  3 - Com o git instalado em sua máquina, execute o comando: <br>
+ <b>git clone https://github.com/joneivison13/loja-array__backend.git backend</b><br>
+  4 - Ao finalizar a etapa 3, surgirá uma pasta chamada <b>backend</b>. Entre nela e execute o comando <b>npm install</b> e assim que finalizar o comando digite <b>npm run build</b> e em seguida <b>npm run start</b> para iniciar o servidor.
+  <h3>Servidor iniciado com sucesso!!</h3>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Como iniciar o front-end?
+  1 - Com o servidor concluido, retorne para a pasta raiz da aplicação aberta pelo terminal.<br>
+  2 - Execute o comando:<br> **git clone https://github.com/joneivison13/loja-array__frontend.git frontend** .<br>
+  3 - Entre na pasta **frontend** cliada pelo comando acima. <br>
+  4 - Execute os comandos **npm install**, em seguida **npm start**.
+  <h3>Frontend iniciado com sucesso, para abrilo, entre em <a href="http://localhost:3000">http://localhost:3000</a></h3>
