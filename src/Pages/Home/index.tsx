@@ -1,91 +1,62 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../../Components/Header";
 import { Container } from "./styles";
 
 import BgImage from "../../assets/img/bghome.svg";
 import Product from "../../Components/Product";
 
-import short01 from '../../assets/products-assets/short01.jpeg'
-import short02 from '../../assets/products-assets/short02.jpeg'
-import short03 from '../../assets/products-assets/short03.jpeg'
-import short04 from '../../assets/products-assets/short04.webp'
-import biquini01 from '../../assets/products-assets/biquini01.jpeg'
-import biquini02 from '../../assets/products-assets/biquini02.jpeg'
-import biquini03 from '../../assets/products-assets/biquini03.jpeg'
-import biquini04 from '../../assets/products-assets/biquini04.webp'
-
+import short01 from "../../assets/products-assets/short01.jpeg";
+import short02 from "../../assets/products-assets/short02.jpeg";
+import short03 from "../../assets/products-assets/short03.jpeg";
+import short04 from "../../assets/products-assets/short04.webp";
+import biquini01 from "../../assets/products-assets/biquini01.jpeg";
+import biquini02 from "../../assets/products-assets/biquini02.jpeg";
+import biquini03 from "../../assets/products-assets/biquini03.jpeg";
+import biquini04 from "../../assets/products-assets/biquini04.webp";
+import api from "../../services/api";
+import { AxiosResponse } from "axios";
 
 interface IHomeProps {
-  location:any;
+  location: any;
+}
+
+interface IProduct {
+    idproduct: number;
+    product_name: string;
+    product_price: number;
+    product_amount: number;
+    user_iduser: number;
+    idphoto: number;
+    products_photos_dir: string;
+    products_idproduct: number;
+}
+
+interface ProductsApi{
+  product?:IProduct[];
 }
 
 const Home: React.FunctionComponent<IHomeProps> = (props) => {
-  const products = [
-    {
-      image:[short01, short02, short03, short04],
-      name:'Short azul masculino 01',
-      id:1,
-      preco:'300.50'
-    },
-    {
-      image:[short02, short03,short04, short01],
-      name:'Short azul masculino 02',
-      id:2,
-      preco:'300.50'
-    },
-    {
-      image:[short03,short04, short01, short02],
-      name:'Short azul masculino 03',
-      id:3,
-      preco:'300.50'
-    },
+  const [productsApi, setProducts] = useState<ProductsApi>();
 
-    {
-      image:[short04, short03, short01, short02],
-      name:'Short azul masculino 03',
-      id:4,
-      preco:'300.50'
-    },
-    
-    {
-      image:[biquini01, biquini02, biquini03,biquini04],
-      name:'biquini azul 01',
-      id:5,
-      preco:'300.50'
-    },
-    {
-      image:[biquini02, biquini03,biquini04, biquini01],
-      name:'biquini azul 02',
-      id:6,
-      preco:'300.50'
-    },
-    {
-      image:[biquini03,biquini04, biquini01, biquini02],
-      name:'biquini azul 03',
-      id:7,
-      preco:'300.50'
-    },
-    {
-      image:[biquini04, biquini01, biquini02,biquini03],
-      name:'biquini azul 03',
-      id:8,
-      preco:'300.50'
-    },
-  ]
-
-  if(!props.location.state){
-    window.location.href = '/login'
-  }
+  useEffect(() => {
+    api.get("/product").then(res => {
+      // alert('aaa')
+        setProducts(res.data);
+        console.log(res)
+      })
+  }, []);
+  const location = props.location.state ? props.location.state : null;
   return (
     <>
-      <Header userphoto={props.location.state}/>
+      <Header userphoto={location} />
       <Container>
-         <img draggable="false" src={BgImage} alt="" className="bg"   />
+        <img draggable="false" src={BgImage} alt="" className="bg" />
         <div className="products">
-          {products.map(product => {
-            return (
-              <Product product={product} key={product.id} />
-            )
+          {/* {productsApi?.products.map((product) => {
+            return <Product product={product} key={product.idproduct} />;
+          })} */}
+          {productsApi?.product?.map((product) => {
+            return <Product product={product} key={product.idproduct} />;
           })}
         </div>
       </Container>

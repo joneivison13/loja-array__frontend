@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header";
 import { Container } from "./styles";
 
@@ -6,81 +6,67 @@ import ArrowLeft from "../../assets/img/arrowleft.svg";
 import ArrowRight from "../../assets/img/arrowright.svg";
 import Search from "../../assets/img/search.svg";
 import Cart from "../../assets/img/cart.svg";
+import { useLocation } from "react-router-dom";
+import api from "../../services/api";
 // import Product from "../../Components/Product";
 
-export interface IProductProps {
-  product: Product;
-  location:{
-    state:Product;
-  }
+export interface IProductProps {}
+
+interface IProduct {
+  idproduct: number;
+  product_name: string;
+  product_price: number;
+  product_amount: number;
+  user_iduser: number;
+  idphoto: number;
+  products_photos_dir: string;
+  products_idproduct: number;
+  product_about:string;
 }
 
-interface Product {
-  image: string[];
-  name: string;
+interface ProductsApi {
   id: number;
-  preco: string;
+  product?: IProduct;
 }
 
 export default function Product(props: IProductProps) {
-  const [indexCarrousel, setIndexCarrousel] = useState(0);
-  const product = props.location.state;
+  const [productApi, setProduct] = useState<ProductsApi>();
+  const location = useLocation();
+  let idProduct = window.location.pathname.split("/")[2];
 
-  console.log(product)
+  useEffect(() => {
+    api.get(`/product/${idProduct}`).then((res) => {
+      setProduct(res.data);
+    });
+  }, []);
 
-  const mouseOutSetCarroussel = (index: number) => {
-    setIndexCarrousel(index);
-  };
+  const product = productApi?.product
+
+  const productImage = String(process.env.REACT_APP_API_URL) + product?.products_photos_dir
+  console.log(productImage)
   return (
     <>
       <Header />
       <Container>
         <div className="container-caroussel">
           <div className="caroussel">
-            <button
-              onClick={() =>
-                setIndexCarrousel(indexCarrousel === 0 ? 0 : indexCarrousel - 1)
-              }
-            >
-              <img draggable="false" src={ArrowLeft} alt="" />
-            </button>
-            <img draggable="false" src={product.image[indexCarrousel]} alt="" />
-            <button
-              onClick={() =>
-                setIndexCarrousel(
-                  indexCarrousel === product.image.length - 1
-                    ? indexCarrousel
-                    : indexCarrousel + 1
-                )
-              }
-            >
-              <img draggable="false" src={ArrowRight} alt="" />
-            </button>
-          </div>
-
-          <div className="images">
-            {product.image.map((image, index) => {
-              return (
-                <img
-                  draggable="false"
-                  src={image}
-                  width="80px"
-                  alt=""
-                  onMouseOver={() => mouseOutSetCarroussel(index)}
-                />
-              );
-            })}
+            <img
+              draggable="false"
+              src={productImage}
+              alt=""
+            />
           </div>
         </div>
 
         <div className="info">
-          <h3 className="name">{product.name}</h3>
+          <h3 className="name">{product?.product_name}</h3>
+          <p>{product?.product_about}</p>
           <p className="price">
-            R$<span>{product.preco}</span>
+            R$<span>{product?.product_price}</span>
           </p>
           <div className="cep">
             <p>
-              Digite seu CEP para calcularmos a data de entrga e custo do seu
+              Digite seu CEP para calcularmos a data de entrega e custo do seu
               frete
             </p>
             <form>
@@ -92,7 +78,9 @@ export default function Product(props: IProductProps) {
           </div>
 
           <div className="finaly">
-            <button type="button" className="pay">Comprar</button>
+            <button type="button" className="pay">
+              Comprar
+            </button>
             <button className="cart">
               <img src={Cart} alt="" />
             </button>

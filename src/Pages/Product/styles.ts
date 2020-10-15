@@ -10,14 +10,19 @@ export const Container = styled.div`
   /* position:relative; */
   .info {
     h3 {
-      font-size: 25px;
+      font-size: 32px;
       font-weight: 500;
+      text-transform:capitalize;
+    }
+    p{
+      font-size:20px;
+      font-weight:normal;
     }
 
     .price {
       color: #e83434;
       font-size: 20px;
-      margin-top: 20px;
+      margin-top: 35px;
 
       span {
         font-size: 35px;
@@ -26,7 +31,7 @@ export const Container = styled.div`
 
     .cep {
       width: 70%;
-      margin: 70px auto 0;
+      margin: 40px auto 0;
       border:2px solid #aaa;
       padding:15px;
       border-radius:10px;
@@ -65,7 +70,7 @@ export const Container = styled.div`
       display: flex;
       justify-content: space-between;
       position:absolute;
-      bottom:30px;
+      top:540px;
       right:50px;
       width:calc(50% - 50px);
       .pay {
@@ -97,7 +102,12 @@ export const Container = styled.div`
       display:flex;
       align-items:center;
       img{
-        width:90%;
+        width:100%;
+        height:410px;
+        object-fit:fill;
+        border:2px solid #aaa;
+        padding:20px;
+        border-radius:10px;
       }
     }
 

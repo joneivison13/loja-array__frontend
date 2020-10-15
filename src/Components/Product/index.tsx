@@ -9,21 +9,25 @@ export interface IProductProps {
 }
 
 interface Product {
-  image: string[];
-  name: string;
-  id: number;
-  preco: string;
+  idproduct: number;
+  product_name: string;
+  product_price: number;
+  product_amount: number;
+  user_iduser: number;
+  idphoto: number;
+  products_photos_dir: string;
+  products_idproduct: number;
 }
 
 function Product(props: IProductProps) {
   const history = useHistory();
   const { product } = props;
   return (
-    <Container onClick={() => history.push(`/products/${product.id}`, {product:product})}>
-       <img draggable="false" src={product.image[0]} alt="" className="productimage" />
-      <h2 className="titleproduct">{product.name.toLocaleLowerCase()}</h2>
+    <Container onClick={() => history.push(`/products/${product.idproduct}`)}>
+       <img draggable="false" src={process.env.REACT_APP_API_URL + product.products_photos_dir} alt="" className="productimage" />
+      <h2 className="titleproduct">{product.product_name.toLocaleLowerCase()}</h2>
       <p className="priceproduct">
-        R$<span>{product.preco}</span>
+        R$<span>{product.product_price}</span>
       </p>
        <img draggable="false" className="cart" src={Cart} alt="" />
     </Container>
