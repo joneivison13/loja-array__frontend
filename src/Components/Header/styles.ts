@@ -180,6 +180,7 @@ export const SubHeader = styled.div<{left:boolean}>`
     background: #039cf5;
     border-top: 3px solid #027de0;
     border-right: 3px solid #027de0;
+    z-index:1000000000;
 
     position: absolute;
     top: 90px;

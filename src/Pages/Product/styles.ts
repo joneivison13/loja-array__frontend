@@ -4,10 +4,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-top: 4px solid #007cc5;
-  /* background-color:#aaa; */
   height: calc(100vh - 148px);
   padding: 20px;
-  /* position:relative; */
   .info {
     h3 {
       font-size: 32px;
@@ -29,48 +27,12 @@ export const Container = styled.div`
       }
     }
 
-    .cep {
-      width: 70%;
-      margin: 40px auto 0;
-      border:2px solid #aaa;
-      padding:15px;
-      border-radius:10px;
-
-      form {
-        margin: 0 auto;
-        width: calc(70% + 40px);
-        display: flex;
-        align-items: center;
-        input {
-          width: 70%;
-          font-size: 19px;
-          padding: 2px 6px;
-          border-radius: 5px 0 0 5px;
-          border: 2px solid #aaa;
-          border-right: none;
-        }
-
-        button {
-          background: #ada100;
-          border: none;
-          padding: 5px;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          margin-left: -3px;
-
-          img {
-            width: 70%;
-          }
-        }
-      }
-    }
-
     .finaly {
       display: flex;
+      flex-direction:column;
       justify-content: space-between;
       position:absolute;
-      top:540px;
+      top:400px;
       right:50px;
       width:calc(50% - 50px);
       .pay {
@@ -87,38 +49,68 @@ export const Container = styled.div`
         background-color: #ada100;
         border: none;
         border-radius: 10px;
+        width:75%;
+        height:75px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        color: #fff;
+        font-size: 140%;
+        padding: 20px;
+        margin-top:20px;
 
         img {
-          width: 70%;
+          width: 40px;
+          margin-right:20px;
         }
       }
     }
   }
 
   .container-caroussel{
-    width:70%;
-    
+    width:65%;   
+    margin:0 auto;
+    max-width:550px; 
     .caroussel{
-      display:flex;
-      align-items:center;
       img{
         width:100%;
-        height:410px;
+        height:390px;
         object-fit:fill;
         border:2px solid #aaa;
         padding:20px;
         border-radius:10px;
+        margin-right:auto;
       }
     }
+  }
 
-    .images{
-      display:flex;
-      justify-content:space-between;
-      margin-top:10px;
-      img{
-        border:2px solid #aaa;
-        padding:5px;
-        border-radius:10px;
+  .back{
+    position:absolute;
+    left:20px;
+    top:180px;
+    background:#039cf5;
+    padding:5px;
+    border-radius:10px;
+
+    img{
+      width:50px;
+    }
+  }
+
+  @media (max-width:1000px){
+    display:flex;
+    flex-direction:column;
+    z-index:-1000;
+
+    .info .finaly {
+      top:800px;
+      width:100%;
+      left:auto;
+      right:0;
+      button{
+      margin:0 auto;
+        max-width:90%;
+        width:100% !important;
       }
     }
   }

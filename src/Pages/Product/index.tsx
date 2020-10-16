@@ -6,9 +6,10 @@ import ArrowLeft from "../../assets/img/arrowleft.svg";
 import ArrowRight from "../../assets/img/arrowright.svg";
 import Search from "../../assets/img/search.svg";
 import Cart from "../../assets/img/cart.svg";
+import Back from '../../assets/img/back.svg'
+
 import { useLocation } from "react-router-dom";
 import api from "../../services/api";
-// import Product from "../../Components/Product";
 
 export interface IProductProps {}
 
@@ -48,6 +49,11 @@ export default function Product(props: IProductProps) {
     <>
       <Header />
       <Container>
+        <div className="back">
+          <img src={Back} onClick={() => {
+            window.location.href = '/'
+          }} alt=""/>
+        </div>
         <div className="container-caroussel">
           <div className="caroussel">
             <img
@@ -64,25 +70,14 @@ export default function Product(props: IProductProps) {
           <p className="price">
             R$<span>{product?.product_price}</span>
           </p>
-          <div className="cep">
-            <p>
-              Digite seu CEP para calcularmos a data de entrega e custo do seu
-              frete
-            </p>
-            <form>
-              <input type="text" />
-              <button className="button-search" type="submit">
-                <img draggable="false" src={Search} alt="" />
-              </button>
-            </form>
-          </div>
+          
 
           <div className="finaly">
             <button type="button" className="pay">
               Comprar
             </button>
             <button className="cart">
-              <img src={Cart} alt="" />
+              <img src={Cart} alt="" /> Adicionar ao carrinho
             </button>
           </div>
         </div>
