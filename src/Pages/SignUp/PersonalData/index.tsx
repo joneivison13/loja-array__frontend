@@ -8,6 +8,8 @@ import { Container } from './styles';
 import PersonalDataSignUp from '../../../Components/PersonalDataSignUp';
 import { useLocation } from 'react-router';
 
+import Back from '../../../assets/img/back.svg'
+
 interface Props{}
 
 const PersonalData = (props:Props) => {
@@ -19,6 +21,11 @@ const PersonalData = (props:Props) => {
   }, [])
   return(
     <Container>
+      <div className="back">
+          <img src={Back} onClick={() => {
+            window.location.href = '/'
+          }} alt=""/>
+        </div>
        <img draggable="false" src={LogoImage} alt=""   className="logo"/>
       <PersonalDataSignUp/>
        <img draggable="false" src={WavesImage} alt=""   className="background-waves"/>

@@ -120,6 +120,28 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
           </div>
 
           <img draggable="false" src={Cart} alt="" className="cart" />
+
+          {user?.user_name ? (
+            <>
+              <img src={Logout} onClick={() => {
+                localStorage.removeItem('@TOKEN')
+                localStorage.removeItem('@USER')
+                window.location.reload()
+              }} alt="" className="logout" />
+              <div className="profile">
+                <p>{user.user_name}</p>
+              </div>
+            </>
+          ) : (
+            <button
+              className="login"
+              onClick={() => {
+                window.location.href = "/login";
+              }}
+            >
+              Faça Login ou Cadastre-se
+            </button>
+          )}
         </span>
       </SubHeader>
     </>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.header<{screen:string}>`
+export const Container = styled.header<{ screen: string }>`
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -10,22 +10,22 @@ export const Container = styled.header<{screen:string}>`
     display: flex;
   }
 
-  .thumbnail{
-    display:flex;
-    justify-content:space-between;
-    width:100%;
+  .thumbnail {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
-  .login{
-    width:200px;
-    height:30px;
-    align-self:center;
-    margin-right:30px;
-    border-radius:8px;
-    border:none;
-    background:#2054FA;
-    color:#fff;
-    font-weight:500;
+  .login {
+    width: 200px;
+    height: 30px;
+    align-self: center;
+    margin-right: 30px;
+    border-radius: 8px;
+    border: none;
+    background: #2054fa;
+    color: #fff;
+    font-weight: 500;
   }
 
   .button-search {
@@ -34,8 +34,8 @@ export const Container = styled.header<{screen:string}>`
     padding: 8px 5px 5px;
     border-radius: 10px;
     margin-left: 10px;
-    width:40px;
-    height:40px;
+    width: 40px;
+    height: 40px;
 
     img {
       width: 70%;
@@ -62,7 +62,7 @@ export const Container = styled.header<{screen:string}>`
   .search-input {
     position: absolute;
     width: 50%;
-    min-width:200px;
+    min-width: 200px;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -90,62 +90,62 @@ export const Container = styled.header<{screen:string}>`
     }
   }
 
-  .profile{
-    color:#fff;
-    font-weight:500;
-    align-self:center;
-    margin-right:30px;
-    text-transform:capitalize;
-    font-size:25px;
-    background:#2054FA;
-    padding:10px 20px;
-    border-radius:10px;
+  .profile {
+    color: #fff;
+    font-weight: 500;
+    align-self: center;
+    margin-right: 30px;
+    text-transform: capitalize;
+    font-size: 25px;
+    background: #2054fa;
+    padding: 10px 20px;
+    border-radius: 10px;
   }
 
-  .logout{
-    margin:0 25px;
+  .logout {
+    margin: 0 25px;
   }
 
-  @media (max-width:800px){
-    .items{
-      display:none;
+  @media (max-width: 800px) {
+    .items {
+      display: none;
     }
   }
 
-  @media (max-width:500px){
+  @media (max-width: 500px) {
     .search-input {
-      width:70%;
-      right:15%;
+      width: 70%;
+      right: 15%;
 
-      input{
-        width:100%;
+      input {
+        width: 100%;
       }
     }
   }
 
-  @media (min-width:800px){
-    .thumbnail{
-      .navbutton{
-        display:none;
+  @media (min-width: 800px) {
+    .thumbnail {
+      .navbutton {
+        display: none;
       }
     }
   }
 
-  @media (max-width:550px){
-    .thumbnail .logo{
-      margin-left:${(props) => props.screen === '/' ? 0 :90}px;
+  @media (max-width: 550px) {
+    .thumbnail .logo {
+      margin-left: ${(props) => (props.screen === "/" ? 0 : 90)}px;
     }
   }
 `;
 
-export const SubHeader = styled.div<{left:boolean}>`
+export const SubHeader = styled.div<{ left: boolean }>`
   display: flex;
   justify-content: space-around;
   height: 50px;
   align-items: center;
   /* overflow-x:auto; */
   max-width: 100%;
-  transition:margin 1s;
+  transition: margin 1s;
 
   p {
     margin: 0 20px;
@@ -195,31 +195,55 @@ export const SubHeader = styled.div<{left:boolean}>`
     background: #039cf5;
     border-top: 3px solid #027de0;
     border-right: 3px solid #027de0;
-    z-index:1000000000;
+    z-index: 1000000000;
 
     position: absolute;
     top: 90px;
     height: calc(100vh - 90px);
     left: -00px;
-    margin-left:${props => props.left === true ? -500 : 0}px;
+    margin-left: ${(props) => (props.left === true ? -500 : 0)}px;
+
+    .profile {
+      color: #fff;
+      font-weight: 500;
+      align-self: center;
+      margin-right: 30px;
+      text-transform: capitalize;
+      font-size: 25px;
+      background: #2054fa;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .login {
+      width: 200px;
+      height: 30px;
+      align-self: center;
+      margin-right: 30px;
+      border-radius: 8px;
+      border: none;
+      background: #2054fa;
+      color: #fff;
+      font-weight: 500;
+    }
 
     .items {
       display: flex;
       flex-direction: column;
-      align-items:flex-start;
-      margin-left:20px;
+      align-items: flex-start;
+      margin-left: 20px;
 
       .search {
         display: flex;
         align-items: center;
         color: #fff;
         cursor: pointer;
-        font-size:20px;
+        font-size: 20px;
       }
 
       .cart {
         width: 60px;
-        margin:15px 0px;
+        margin: 15px 0px;
         display: block;
       }
 
@@ -253,7 +277,7 @@ export const SubHeader = styled.div<{left:boolean}>`
     }
   }
 
-  @media (max-width:500px){
-    width:100%;
+  @media (max-width: 500px) {
+    width: 100%;
   }
 `;

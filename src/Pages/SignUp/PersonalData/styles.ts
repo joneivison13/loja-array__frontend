@@ -9,6 +9,19 @@ export const Container = styled.div`
     margin:20px;
   }
 
+  .back{
+    position:absolute;
+    left:120px;
+    top:30px;
+    background:#2054FA;
+    padding:5px;
+    border-radius:10px;
+
+    img{
+      width:50px;
+    }
+  }
+
   .background-waves{
     width:100%;
     position:absolute;
