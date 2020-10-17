@@ -114,4 +114,15 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width:550px){
+    .back{
+      top:20px;
+      background:#2054FA;
+    }
+    .container-caroussel{
+      width:90%;
+      margin:0;
+    }
+  }
 `;

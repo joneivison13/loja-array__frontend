@@ -5,6 +5,7 @@ export const Container = styled.div`
   width:100%;
   transition:all .3s;
   cursor:pointer;
+  border-radius:10px;
   
   img.productimage{
     padding:5%;

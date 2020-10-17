@@ -6,9 +6,10 @@ import Search from "../../assets/img/search.svg";
 import Cart from "../../assets/img/cart.svg";
 import Location from "../../assets/img/location.svg";
 import Navbutton from "../../assets/img/navbutton.svg";
+import Logout from "../../assets/img/logout.svg";
 
 interface IHeaderProps {
-  userphoto?:any;
+  userphoto?: any;
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
@@ -24,10 +25,11 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     }
   }
 
-  console.log(props)
+  const sotrageUser: any = localStorage.getItem("@USER");
+  const user: any = JSON.parse(sotrageUser);
   return (
     <>
-      <Container>
+      <Container screen={window.location.pathname}>
         <div className="search-input" style={{ top: mostSearch ? 0 : -100 }}>
           <form>
             <input
@@ -44,6 +46,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
             </button>
           </form>
         </div>
+
         <span className="thumbnail">
           <img draggable="false" src={Logo} alt="" className="logo" />
           <img
@@ -58,10 +61,17 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
         </span>
 
         <span className="items">
-          {!!localStorage.getItem("@TOKEN") ? (
-            <div className="profile">
-              <img width='50px' className="profile" src={`http://localhost:3333/static/img/${props.userphoto.user.user_photo}`} alt=""/>
-            </div>
+          {user?.user_name ? (
+            <>
+              <img src={Logout} onClick={() => {
+                localStorage.removeItem('@TOKEN')
+                localStorage.removeItem('@USER')
+                window.location.reload()
+              }} alt="" className="logout" />
+              <div className="profile">
+                <p>{user.user_name}</p>
+              </div>
+            </>
           ) : (
             <button
               className="login"

@@ -19,8 +19,8 @@ const LoginComponent: React.FC = () => {
       .post("/login", { user_email: user, user_pass: password })
       .then((res: any) => {
         localStorage.setItem("@TOKEN", res.data.token);
+        localStorage.setItem("@USER", JSON.stringify(res.data.user));
         history.push("/", { user: res.data.user });
-        console.log('res',  res.data.user )
       })
       .catch(() =>
         toast.error("Usuário/Senha incorretos", {
@@ -77,7 +77,9 @@ const LoginComponent: React.FC = () => {
       </form>
 
       <div className="actions">
-        <small>Ainda não tenho conta</small>
+        <small onClick={() => {
+          window.location.href = '/signup/personal-data'
+        }}>Ainda não tenho conta</small>
         <small>Esqueci minha senha</small>
       </div>
     </Container>

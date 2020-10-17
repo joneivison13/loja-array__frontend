@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header";
 import { Container } from "./styles";
 
-import ArrowLeft from "../../assets/img/arrowleft.svg";
-import ArrowRight from "../../assets/img/arrowright.svg";
-import Search from "../../assets/img/search.svg";
+
 import Cart from "../../assets/img/cart.svg";
 import Back from '../../assets/img/back.svg'
 
-import { useLocation } from "react-router-dom";
 import api from "../../services/api";
 
 export interface IProductProps {}
@@ -32,19 +29,17 @@ interface ProductsApi {
 
 export default function Product(props: IProductProps) {
   const [productApi, setProduct] = useState<ProductsApi>();
-  const location = useLocation();
   let idProduct = window.location.pathname.split("/")[2];
 
   useEffect(() => {
     api.get(`/product/${idProduct}`).then((res) => {
       setProduct(res.data);
     });
-  }, []);
+  }, [idProduct]);
 
   const product = productApi?.product
 
   const productImage = String(process.env.REACT_APP_API_URL) + product?.products_photos_dir
-  console.log(productImage)
   return (
     <>
       <Header />

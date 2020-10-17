@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.header`
+export const Container = styled.header<{screen:string}>`
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -91,10 +91,19 @@ export const Container = styled.header`
   }
 
   .profile{
-    border-radius:50%;
-    width:50px;
+    color:#fff;
+    font-weight:500;
     align-self:center;
-    margin-right:20px;
+    margin-right:30px;
+    text-transform:capitalize;
+    font-size:25px;
+    background:#2054FA;
+    padding:10px 20px;
+    border-radius:10px;
+  }
+
+  .logout{
+    margin:0 25px;
   }
 
   @media (max-width:800px){
@@ -119,6 +128,12 @@ export const Container = styled.header`
       .navbutton{
         display:none;
       }
+    }
+  }
+
+  @media (max-width:550px){
+    .thumbnail .logo{
+      margin-left:${(props) => props.screen === '/' ? 0 :90}px;
     }
   }
 `;

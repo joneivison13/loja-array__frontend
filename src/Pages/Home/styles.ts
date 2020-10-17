@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   background: #e2e2e2;
   min-height: 100vh;
+  padding:0 0 30px;
 
   .products{
     margin:-100px 30px 0;
