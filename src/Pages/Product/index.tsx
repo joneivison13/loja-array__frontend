@@ -7,6 +7,7 @@ import Cart from "../../assets/img/cart.svg";
 import Back from '../../assets/img/back.svg'
 
 import api from "../../services/api";
+import { useHistory } from "react-router-dom";
 
 export interface IProductProps {}
 
@@ -30,6 +31,8 @@ interface ProductsApi {
 export default function Product(props: IProductProps) {
   const [productApi, setProduct] = useState<ProductsApi>();
   let idProduct = window.location.pathname.split("/")[2];
+
+  const history = useHistory()
 
   useEffect(() => {
     api.get(`/product/${idProduct}`).then((res) => {
@@ -63,15 +66,21 @@ export default function Product(props: IProductProps) {
           <h3 className="name">{product?.product_name}</h3>
           <p>{product?.product_about}</p>
           <p className="price">
-            R$<span>{product?.product_price}</span>
+            R$<span>{product?.product_price.toFixed(2)}</span>
           </p>
           
 
           <div className="finaly">
-            <button type="button" className="pay">
+            <button type="button" className="pay" onClick={() => alert('comprado')}>
               Comprar
             </button>
-            <button className="cart">
+            <button className="cart" onClick={() => {
+              api.post('/cart', {products_idproducts:idProduct}).then(() => {
+                window.location.href = '/cart'
+              }).catch(() => {
+                history.push('/cart')
+              })
+            }}>
               <img src={Cart} alt="" /> Adicionar ao carrinho
             </button>
           </div>

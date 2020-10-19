@@ -47,7 +47,7 @@ export const Container = styled.header<{ screen: string }>`
     margin: 10px 20px;
   }
   .search {
-    display: flex;
+    display: ${props => props.screen === '/' ? 'flex' : 'none'};
     align-items: center;
     color: #fff;
     cursor: pointer;
@@ -104,6 +104,7 @@ export const Container = styled.header<{ screen: string }>`
 
   .logout {
     margin: 0 25px;
+    cursor: pointer;
   }
 
   @media (max-width: 800px) {

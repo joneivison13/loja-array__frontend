@@ -24,14 +24,12 @@ function Product(props: IProductProps) {
   const { product } = props;
   const env:string = String(process.env.REACT_APP_API_URL)
   const urlApi = env[env.length - 1] ==='/' ? env : env + '/'
-  console.log(env[env.length - 1])
-  console.log(urlApi)
   return (
     <Container onClick={() => history.push(`/products/${product.idproduct}`)}>
        <img draggable="false" src={urlApi + product.products_photos_dir} alt="" className="productimage" />
       <h2 className="titleproduct">{product.product_name.toLocaleLowerCase()}</h2>
       <p className="priceproduct">
-        R$<span>{product.product_price}</span>
+        R$<span>{product.product_price.toFixed(2)}</span>
       </p>
        <img draggable="false" className="cart" src={Cart} alt="" />
     </Container>

@@ -8,9 +8,7 @@ import Location from "../../assets/img/location.svg";
 import Navbutton from "../../assets/img/navbutton.svg";
 import Logout from "../../assets/img/logout.svg";
 
-interface IHeaderProps {
-  userphoto?: any;
-}
+interface IHeaderProps {}
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
   const inputSearchRef = useRef<HTMLInputElement>(null);
@@ -66,7 +64,7 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
               <img src={Logout} onClick={() => {
                 localStorage.removeItem('@TOKEN')
                 localStorage.removeItem('@USER')
-                window.location.reload()
+                window.location.href = '/'
               }} alt="" className="logout" />
               <div className="profile">
                 <p>{user.user_name}</p>
@@ -92,7 +90,9 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
           <img
             draggable="false"
             src={Cart}
-            onClick={() => alert("Página de carrinho em produção")}
+            onClick={() => {
+              window.location.href='/cart'
+            }}
             alt=""
             className="cart"
           />

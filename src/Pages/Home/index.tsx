@@ -54,7 +54,7 @@ const Home: React.FunctionComponent<IHomeProps> = (props) => {
   const location = props.location.state ? props.location.state : null;
   return (
     <>
-      <Header userphoto={location} />
+      <Header />
       <Container>
         <img draggable="false" src={BgImage} alt="" className="bg" />
         <div className="products">
